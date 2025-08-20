@@ -29,20 +29,32 @@ const testDatasets = [
 ];
 
 describe("findBestStudent", () => {
-  it("should return Ivan from dataset 1 (score 35, earlier date than Stepan)", () => {
-    const result = findBestStudent(testDatasets[0]);
-    expect(result.name).toBe("Ivan");
-  });
-
-  it("should return Marina from dataset 2 (score 25, earliest date)", () => {
-    const result = findBestStudent(testDatasets[1]);
-    expect(result.name).toBe("Marina");
-  });
-
-  it("should return Varvara from dataset 3 (all score 0, earliest date)", () => {
-    const result = findBestStudent(testDatasets[2]);
-    expect(result.name).toBe("Varvara");
-  });
+  it.each([
+    {
+      expectedName: "Ivan",
+      label: "dataset #1",
+      reason: "score 35, earlier date than Stepan",
+      dataset: testDatasets[0],
+    },
+    {
+      expectedName: "Marina",
+      label: "dataset #2",
+      reason: "score 25, earliest date",
+      dataset: testDatasets[1],
+    },
+    {
+      expectedName: "Varvara",
+      label: "dataset #3",
+      reason: "all score 0, earliest date",
+      dataset: testDatasets[2],
+    },
+  ])(
+    "should return $expectedName from $label ($reason)",
+    ({ expectedName, label, reason, dataset }) => {
+      const result = findBestStudent(dataset);
+      expect(result?.name).toBe(expectedName);
+    }
+  );
 
   it("should return null for empty array", () => {
     expect(findBestStudent([])).toBeNull();
