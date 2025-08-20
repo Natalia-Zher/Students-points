@@ -1,0 +1,17 @@
+{
+  "name": "hw3.2.2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "jest": "^30.0.5"
+  },
+  "devDependencies": {
+    "babel-plugin-istanbul": "^7.0.0"
+  }
+}
